@@ -1,0 +1,1343 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Front-end-code-standards by annielmenezes</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Front-end-code-standards</h1>
+      <h2 class="project-tagline">I don&#39;t always write javascript, but when I do I follow these rules</h2>
+      <a href="https://github.com/annielmenezes/front-end-code-standards" class="btn">View on GitHub</a>
+      <a href="https://github.com/annielmenezes/front-end-code-standards/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/annielmenezes/front-end-code-standards/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
+<a id="forio-front-end-style-guide" class="anchor" href="#forio-front-end-style-guide" aria-hidden="true"><span class="octicon octicon-link"></span></a>Forio Front-End Style Guide</h1>
+
+<p>This document was inspired by a combination of works:</p>
+
+<ul>
+<li><a href="http://javascript.crockford.com/code.html">Douglas Crockford - Code Conventions for the JavaScript Programming Language</a></li>
+<li><a href="http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml">Google - Javascript Style Guide</a></li>
+<li><a href="http://google-styleguide.googlecode.com/svn/trunk/htmlcssguide.xml#Indentation">Google - HTML/CSS Style Guide</a></li>
+<li><a href="http://html5boilerplate.com/docs">HTML Boilerplate - Documentation</a></li>
+</ul>
+
+<h1>
+<a id="table-of-contents" class="anchor" href="#table-of-contents" aria-hidden="true"><span class="octicon octicon-link"></span></a>Table of Contents</h1>
+
+<h3>
+<a id="10-general" class="anchor" href="#10-general" aria-hidden="true"><span class="octicon octicon-link"></span></a>1.0 <a href="#10-general">General</a>
+</h3>
+
+<ul>
+<li>1.1 <a href="#11-helpful-resources">Helpful Resources</a>
+</li>
+<li>1.2.0 <a href="#120-filenames">Filenames</a>
+
+<ul>
+<li>1.2.1 <a href="#121-avoid-duplicate-filenames">Avoid duplicate filenames</a>
+</li>
+</ul>
+</li>
+<li>1.3.0 <a href="#130-project-structure">Project Structure</a>
+
+<ul>
+<li>1.3.1 <a href="#131-composed-structure">Composed structures</a>
+</li>
+</ul>
+</li>
+<li>1.4 <a href="#14-indentation">Indentation</a>
+</li>
+</ul>
+
+<h3>
+<a id="20-javascript" class="anchor" href="#20-javascript" aria-hidden="true"><span class="octicon octicon-link"></span></a>2.0 <a href="#20-javascript">Javascript</a>
+</h3>
+
+<ul>
+<li>2.1 <a href="#21-strings">Strings</a>
+</li>
+<li>2.2.0 <a href="#220-names">Names</a>
+
+<ul>
+<li>2.2.1 <a href="#221-constants">Constants</a>
+</li>
+<li>2.2.2 <a href="#222-private-variables">Private variables</a>
+</li>
+<li>2.2.3 <a href="#223-constructors">Constructors</a>
+</li>
+<li>2.2.4 <a href="#224-namespaces">Namespaces</a>
+</li>
+<li>2.2.5 <a href="#225-jquery-elements">jQuery Elements</a>
+</li>
+</ul>
+</li>
+<li>2.3 <a href="#23-comments">Comments</a>
+</li>
+<li>2.4 <a href="#24-variable-declarations">Variable Declarations</a>
+</li>
+<li>2.5 <a href="#25-function-declarations">Function Declarations</a>
+</li>
+<li>2.6.0 <a href="#260-statements">Statements</a>
+
+<ul>
+<li>2.6.1 <a href="#261-simple-statements">Simple Statements</a>
+</li>
+<li>2.6.2 <a href="#262-compound-statements">Compound Statements</a>
+</li>
+<li>2.6.3 <a href="#263-return-statement"><code>return</code> Statement</a>
+</li>
+<li>2.6.4 <a href="#264-if-statement"><code>if</code> Statement</a>
+</li>
+<li>2.6.5 <a href="#265-for-statement"><code>for</code> Statement</a>
+</li>
+<li>2.6.6 <a href="#266-while-statement"><code>while</code> Statement</a>
+</li>
+<li>2.6.7 <a href="#267-do-statement"><code>do</code> Statement</a>
+</li>
+<li>2.6.8 <a href="#268-switch-statement"><code>switch</code> Statement</a>
+</li>
+<li>2.6.9 <a href="#269-try-statement"><code>try</code> Statement</a>
+</li>
+<li>2.6.10 <a href="#2610-continue-statement"><code>continue</code> Statement</a>
+</li>
+<li>2.6.11 <a href="#2611-with-statement"><code>with</code> Statement</a>
+</li>
+<li>2.6.12 <a href="#2612-testing-for-equality-or-inequality">Testing for Equality or Inequality</a>
+</li>
+</ul>
+</li>
+<li>2.7 <a href="#27-whitespace">Whitespace</a>
+</li>
+<li>2.8 <a href="#28-dos">Do`s</a>
+</li>
+<li>2.9.0 <a href="#290-donts">Don't`s</a>
+
+<ul>
+<li>2.9.1 <a href="#291-use-of-coffeescript-in-production">Use of CoffeeScript in Production</a>
+</li>
+<li>2.9.2 <a href="#292-modification-of-built-in-objects-and-custom-libraries">Modification of Built-in Objects and Custom Libraries</a>
+</li>
+<li>2.9.3 <a href="#293-confusing-pluses-and-minuses">Confusing Pluses and Minuses</a>
+</li>
+<li>2.9.4 <a href="#294-eval-is-evil"><code>eval</code> is Evil</a>
+</li>
+<li>2.9.5 <a href="#295-internet-explorers-conditional-comments">Internet Explorer's Conditional Comments</a>
+</li>
+<li>2.9.6 <a href="#296-multiline-string-literals">Multiline String Literals</a>
+</li>
+</ul>
+</li>
+</ul>
+
+<h3>
+<a id="30-html-and-css" class="anchor" href="#30-html-and-css" aria-hidden="true"><span class="octicon octicon-link"></span></a>3.0 <a href="#30-html-and-css">HTML and CSS</a>
+</h3>
+
+<ul>
+<li>3.1 <a href="#31-the-html-head-and-body-elements">The <code>&lt;html&gt;</code>, <code>&lt;head&gt;</code>, and <code>&lt;body&gt;</code> Elements</a>
+</li>
+<li>3.2 <a href="#32-doctype-and-encoding">Doctype and Encoding</a>
+</li>
+<li>3.3.0 <a href="#330-other-important-meta-elements">Other Important <code>&lt;meta&gt;</code> Elements</a>
+
+<ul>
+<li>3.3.1 <a href="#331-use-the-latest-rendering-engine">Use the Latest Rendering Engine</a>
+</li>
+<li>3.3.2 <a href="#332-mobile-viewport">Mobile Viewport</a>
+</li>
+</ul>
+</li>
+<li>3.4 <a href="#34-optimized-google-analytics-snippet">Optimized Google Analytics Snippet</a>
+</li>
+<li>3.5.0 <a href="#350-html-formatting">HTML Formatting</a>
+
+<ul>
+<li>3.5.1 <a href="#351-quotes">Quotes</a>
+</li>
+<li>3.5.2 <a href="#352-capitalization">Capitalization</a>
+</li>
+<li>3.5.3 <a href="#353-trailing-whitespace">Trailing Whitespace</a>
+</li>
+<li>3.5.4 <a href="#354-entity-references">Entity References</a>
+</li>
+<li>3.5.5 <a href="#355-optional-elements">Optional Elements</a>
+</li>
+<li>3.5.6 <a href="#356-optional-attributes">Optional Attributes</a>
+</li>
+</ul>
+</li>
+<li>3.6 <a href="#36-semantics">Semantics</a>
+</li>
+<li>3.7 <a href="#37-separation-of-concerns">Separation of Concerns</a>
+</li>
+<li>3.8.0 <a href="#380-id-and-class-naming">ID and Class Naming</a>
+
+<ul>
+<li>3.8.1 <a href="#381-use-meaningful-or-generic-id-and-class-names">Use Meaningful or Generic ID and Class Names</a>
+</li>
+<li>3.8.2 <a href="#382-use-names-that-are-as-short-as-possible-but-as-long-as-necessary">Use Names That are as Short as Possible but as Long as Necessary</a>
+</li>
+</ul>
+</li>
+<li>3.9.0 <a href="#390-selector-performance">Selector Performance</a>
+
+<ul>
+<li>3.9.1 <a href="#391-avoid-a-universal-key-selector">Avoid a Universal Key Selector</a>
+</li>
+<li>3.9.2 <a href="#392-make-your-rules-as-specific-as-possible">Make your Rules as Specific as Possible</a>
+</li>
+<li>3.9.3 <a href="#393-remove-redundant-qualifiers">Remove Redundant Qualifiers</a>
+</li>
+</ul>
+</li>
+<li>3.10.0 <a href="#3100-css-formatting">CSS Formatting</a>
+
+<ul>
+<li>3.10.1 <a href="#3101-shorthand-properties">Shorthand Properties</a>
+</li>
+<li>3.10.2 <a href="#3102-0-and-units">0 and Units</a>
+</li>
+<li>3.10.3 <a href="#3103-quotation-marks-in-uri-values">Quotation Marks in URI Values</a>
+</li>
+<li>3.10.4 <a href="#3104-hexadecimal-notation">Hexadecimal Notation</a>
+</li>
+<li>3.10.5 <a href="#3105-prefixes">Prefixes</a>
+</li>
+<li>3.10.6 <a href="#3106-id-and-class-name-delimiters">ID and Class Name Delimiters</a>
+</li>
+<li>3.10.7 <a href="#3107-order">Order</a>
+</li>
+<li>3.10.8 <a href="#3108-block-content-indentation">Block Content Indentation</a>
+</li>
+<li>3.10.9 <a href="#3109-semicolons">Semicolons</a>
+</li>
+<li>3.10.10 <a href="#31010-property-name-stops">Property Name Stops</a>
+</li>
+<li>3.10.11 <a href="#31011-selector-and-declaration-separation">Selector and Declaration Separation</a>
+</li>
+<li>3.10.12 <a href="#31012-rule-separation">Rule Separation</a>
+</li>
+</ul>
+</li>
+<li>3.11 <a href="#311-conditional-stylesheetscss-hacks">Conditional Stylesheets/CSS Hacks</a>
+</li>
+</ul>
+
+<h1>
+<a id="10-general-1" class="anchor" href="#10-general-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>1.0 General</h1>
+
+<p><strong>BE CONSISTENT</strong></p>
+
+<p>If you're editing code, take a few minutes to look at the code around you and determine its style. If they use spaces around all their arithmetic operators, you should too. If their comments have little boxes of hash marks around them, make your comments have little boxes of hash marks around them too.</p>
+
+<p>The point of having style guidelines is to have a common vocabulary of coding so people can concentrate on what you're saying rather than on how you're saying it. We present global style rules here so people know the vocabulary, but local style is also important. If code you add to a file looks drastically different from the existing code around it, it throws readers out of their rhythm when they go to read it. Avoid this.</p>
+
+<h2>
+<a id="11-helpful-resources" class="anchor" href="#11-helpful-resources" aria-hidden="true"><span class="octicon octicon-link"></span></a>1.1 Helpful Resources</h2>
+
+<ul>
+<li><a href="http://html5boilerplate.com/">HTML5 Boilerplate</a></li>
+<li><a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap</a></li>
+<li><a href="http://underscorejs.org/">Underscore.js</a></li>
+</ul>
+
+<h2>
+<a id="120-filenames" class="anchor" href="#120-filenames" aria-hidden="true"><span class="octicon octicon-link"></span></a>1.2.0 Filenames</h2>
+
+<p>Filenames should be all lowercase in order to avoid confusion on case-sensitive platforms. Filenames should contain no punctuation except for - or _ (prefer - to _).</p>
+
+<p>Modifications made to 3rd party libraries should be indicated in the filename. For example: highcharts.v2.1.custom.js.</p>
+
+<h3>
+<a id="121-avoid-duplicate-filenames" class="anchor" href="#121-avoid-duplicate-filenames" aria-hidden="true"><span class="octicon octicon-link"></span></a>1.2.1 Avoid duplicate filenames</h3>
+
+<p>Appending the type of an object to the filename can help prevent duplicates and facilitate easier lookups within the devtools.</p>
+
+<p>Models, views, controllers, routers, and collections should always be suffixed with their type.</p>
+
+<p>Example:</p>
+
+<pre><code>user-model.js
+users-collection.js
+users-controller.js
+users-view.js
+users-router.js
+</code></pre>
+
+<h2>
+<a id="130-project-structure" class="anchor" href="#130-project-structure" aria-hidden="true"><span class="octicon octicon-link"></span></a>1.3.0 Project Structure</h2>
+
+<pre><code>├── grunt
+│   ├── uglify.js
+│   └── watch.js
+├── src
+│   ├── client
+│   │   ├── scripts
+│   │   │   ├── vendor
+│   │   │   │   ├── jquery
+│   │   │   │   │   ├── jquery.min.js
+│   │   │   │   │   └── jquery.js
+│   │   │   │   ├── backbone
+│   │   │   │   │   ├── backbone.min.js
+│   │   │   │   │   └── backbone.js
+│   │   │   │   └── underscore
+│   │   │   │   │   ├── underscore.min.js
+│   │   │   │   │   └── underscore.js
+│   │   │   │   └── forio
+│   │   │   │   │   ├── api.min.js
+│   │   │   │   │   └── api.js
+│   │   │   ├── common
+│   │   │   │   ├── routers
+│   │   │   │   │   ├── router.js
+│   │   │   │   ├── views
+│   │   │   │   │   └── view.js
+│   │   │   │   ├── templates
+│   │   │   ├── users
+│   │   │   │   ├── routers
+│   │   │   │   ├── views
+│   │   │   │   │   ├── index-view.js
+│   │   │   │   │   └── index
+│   │   │   │   │   │   ├── user-details-view.js
+│   │   │   │   │   │   └── user-row-view.js
+│   │   │   │   └── templates
+│   │   │   └── home
+│   │   │   │   └── ...
+│   │   ├── img
+│   │   │   └── ...
+│   │   ├── styles
+│   │   │   ├── vendor
+│   │   │   │   ├── bootstrap
+│   │   │   │   └── symbol-set
+│   │   │   ├── app
+│   │   │   │   ├── header.less
+│   │   │   │   ├── ...
+│   │   │   │   ├── footer.less
+│   │   │   │   └── app.less
+│   │   │   └── style.less
+│   │   ├── .jshintrc
+│   │   └── favicon.ico
+│   ├── server
+│   │   ├── lib
+│   │   │   ├── extensions
+│   │   │   ├── middleware
+│   │   │   └── mvc
+│   │   ├── common
+│   │   │   ├── views
+│   │   │   │   └── layouts
+│   │   │   │   │   └── default.hbs
+│   │   │   └── ...
+│   │   ├── users
+│   │   │   ├── controllers
+│   │   │   │   └── home-controller.js
+│   │   │   ├── views
+│   │   │   │   ├── help.hbs
+│   │   │   │   └── index.hbs
+│   │   │   └── ...
+│   │   └── home
+│   │   │   └── ...
+│   │   ├── index.js
+│   │   └── .jshintrc
+│   └── shared
+│       ├── models
+│       │   ├── user.js
+│       │   └── run.js
+│       └── collections
+│           ├── users.js
+│           └── runs.js
+├── .gitignore
+├── .jscs.json
+├── .jshintrc
+├── package.json
+├── Gruntfile.js
+└── README.md
+</code></pre>
+
+<h3>
+<a id="131-composed-structures" class="anchor" href="#131-composed-structures" aria-hidden="true"><span class="octicon octicon-link"></span></a>1.3.1 Composed structures</h3>
+
+<p>Substructures of views, models, etc. should exist inside a folder named after their parent.</p>
+
+<p>Example:
+Index view with 2 sub-views, user-details and user-row.</p>
+
+<p>File structure:</p>
+
+<pre><code>src/client/scripts/users
+├── views
+│   ├── index-view.js
+│   └── index
+│   │   ├── user-details-view.js
+│   │   └── user-row-view.js
+</code></pre>
+
+<p>index-view.js:</p>
+
+<pre><code>'use strict';
+
+// npm module
+var View = require('view');
+// sub-views
+var UserDetails = require('./index/user-details-view');
+var UserRow = require('./index/user-row-view');
+
+module.exports = View.extend({
+    render: function () {
+        var selected = this.collection.getSelected();
+
+        this.collection.each(function (model) {
+            this.renderChild(new UserRow({ model: model }));
+        }, this);
+
+        if (selected) {
+            this.renderChild(new UserDetails({ model: selected }));
+        }
+    }
+});
+</code></pre>
+
+<h2>
+<a id="14-indentation" class="anchor" href="#14-indentation" aria-hidden="true"><span class="octicon octicon-link"></span></a>1.4 Indentation</h2>
+
+<p>The unit of indentation is four spaces. Use of tabs should be avoided because (as of this writing in the 21st Century) there still is not a standard for the placement of tabstops. The use of spaces can produce a larger filesize, but the size is not significant over local networks, and the difference is eliminated by minification.</p>
+
+<h1>
+<a id="20-javascript-1" class="anchor" href="#20-javascript-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>2.0 Javascript</h1>
+
+<h2>
+<a id="21-strings" class="anchor" href="#21-strings" aria-hidden="true"><span class="octicon octicon-link"></span></a>2.1 Strings</h2>
+
+<p>Prefer <code>'</code> over <code>"</code>
+For consistency  <code>'</code> (single-quotes) are preferred to <code>"</code> (double-quotes). This is helpful when creating strings that include HTML:</p>
+
+<div class="highlight highlight-javascript"><pre><span class="pl-k">var</span> msg <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">'</span>&lt;p class="message"&gt;This is some HTML&lt;p&gt;<span class="pl-pds">'</span></span>;</pre></div>
+
+<h2>
+<a id="220-names" class="anchor" href="#220-names" aria-hidden="true"><span class="octicon octicon-link"></span></a>2.2.0 Names</h2>
+
+<p>In general use:</p>
+
+<ul>
+<li>functionNamesLikeThis</li>
+<li>variableNamesLikeThis</li>
+<li>methodNamesLikeThis</li>
+<li>ConstructorNamesLikeThis</li>
+<li>SYMBOLIC_CONSTANTS_LIKE_THIS</li>
+</ul>
+
+<h3>
+<a id="221-constants" class="anchor" href="#221-constants" aria-hidden="true"><span class="octicon octicon-link"></span></a>2.2.1 Constants</h3>
+
+<p>Use NAMES_LIKE_THIS for constants; never use the <code>const</code> keyword.</p>
+
+<div class="highlight highlight-javascript"><pre><span class="pl-k">var</span> <span class="pl-c1">ONE_SECOND</span> <span class="pl-k">=</span> <span class="pl-c1">1000</span>;
+<span class="pl-k">var</span> <span class="pl-c1">ONE_MINUTE</span> <span class="pl-k">=</span> <span class="pl-c1">ONE_SECOND</span> <span class="pl-k">*</span> <span class="pl-c1">60</span>;</pre></div>
+
+<h3>
+<a id="222-private-variables" class="anchor" href="#222-private-variables" aria-hidden="true"><span class="octicon octicon-link"></span></a>2.2.2 Private Variables</h3>
+
+<p>Do not use _ (underbar) as the first character of a name. It is sometimes used to indicate privacy, but it does not actually provide privacy. If privacy is important, use the forms that provide private members. Avoid conventions that demonstrate a lack of competence.</p>
+
+<h3>
+<a id="223-constructors" class="anchor" href="#223-constructors" aria-hidden="true"><span class="octicon octicon-link"></span></a>2.2.3 Constructors</h3>
+
+<p>Constructor functions which must be used with the new prefix should start with a capital letter. JavaScript issues neither a compile-time warning nor a run-time warning if a required new is omitted. Bad things can happen if new is not used, so the capitalization convention is the only defense we have.</p>
+
+<h3>
+<a id="224-namespaces" class="anchor" href="#224-namespaces" aria-hidden="true"><span class="octicon octicon-link"></span></a>2.2.4 Namespaces</h3>
+
+<p>JavaScript has no inherent packaging or namespacing support.</p>
+
+<p>Global name conflicts are difficult to debug, and can cause intractable problems when two projects try to integrate. In order to make it possible to share common JavaScript code, we've adopted conventions to prevent collisions.</p>
+
+<p>Global variables (generally only 1 per project) should be all lowercase if a word or all caps if an acronym.</p>
+
+<p>Use different namespaces for external code and internal code</p>
+
+<p>"External code" is code that comes from outside your codebase, and is compiled independently. Internal and external names should be kept strictly separate. If you're using an external library that makes things available in <code>foo.hats.*</code>, your internal code should not define all its symbols in <code>foo.hats.*</code>, because it will break if the other team member defines new symbols.</p>
+
+<div class="highlight highlight-javascript"><pre><span class="pl-c1">window</span>[<span class="pl-s"><span class="pl-pds">'</span>forio<span class="pl-pds">'</span></span>] <span class="pl-k">=</span> <span class="pl-c1">window</span>[<span class="pl-s"><span class="pl-pds">'</span>forio<span class="pl-pds">'</span></span>] <span class="pl-k">||</span> {};
+forio.<span class="pl-c1">utils</span> <span class="pl-k">=</span> {};</pre></div>
+
+<div class="highlight highlight-javascript"><pre><span class="pl-c1">window</span>[<span class="pl-s"><span class="pl-pds">'</span>MLB<span class="pl-pds">'</span></span>] <span class="pl-k">=</span> <span class="pl-c1">window</span>[<span class="pl-s"><span class="pl-pds">'</span>MLB<span class="pl-pds">'</span></span>] <span class="pl-k">||</span> {};</pre></div>
+
+<h3>
+<a id="225-jquery-elements" class="anchor" href="#225-jquery-elements" aria-hidden="true"><span class="octicon octicon-link"></span></a>2.2.5 jQuery Elements</h3>
+
+<p>Prefix jQuery elements with $ for clarity</p>
+
+<div class="highlight highlight-javascript"><pre><span class="pl-k">var</span> $el <span class="pl-k">=</span> $(<span class="pl-v">this</span>);</pre></div>
+
+<h2>
+<a id="23-comments" class="anchor" href="#23-comments" aria-hidden="true"><span class="octicon octicon-link"></span></a>2.3 Comments</h2>
+
+<p>Be generous with comments. It is useful to leave information that will be read at a later time by people (possibly yourself) who will need to understand what you have done. The comments should be well-written and clear, just like the code they are annotating. An occasional nugget of humor might be appreciated. Frustrations and resentments will not.</p>
+
+<p>It is important that comments be kept up-to-date. Erroneous comments can make programs even harder to read and understand.</p>
+
+<p>Make comments meaningful. Focus on what is not immediately visible. Don't waste the reader's time with stuff like</p>
+
+<div class="highlight highlight-javascript"><pre>i <span class="pl-k">=</span> <span class="pl-c1">0</span>; <span class="pl-c">// Set i to zero.</span></pre></div>
+
+<p>Generally use line comments. Save block comments for formal documentation and for commenting out.</p>
+
+<p>Use <a href="http://code.google.com/p/jsdoc-toolkit/">JSDoc</a> for formal documentation.</p>
+
+<h2>
+<a id="24-variable-declarations" class="anchor" href="#24-variable-declarations" aria-hidden="true"><span class="octicon octicon-link"></span></a>2.4 Variable Declarations</h2>
+
+<p>All variables should be declared before used. JavaScript does not require this, but doing so makes the program easier to read and makes it easier to detect undeclared variables that may become implied globals. Implied global variables should never be used.</p>
+
+<p>The <code>var</code> statements should be the first statements in the function body.</p>
+
+<p>It is preferred that each variable be given its own line and comment. They should be listed in alphabetical order.</p>
+
+<div class="highlight highlight-javascript"><pre><span class="pl-k">var</span> currentEntry; <span class="pl-c">// currently selected table entry</span>
+<span class="pl-k">var</span> level;        <span class="pl-c">// indentation level</span>
+<span class="pl-k">var</span> size;         <span class="pl-c">// size of table</span></pre></div>
+
+<p>JavaScript does not have block scope, so defining variables in blocks can confuse programmers who are experienced with other C family languages. Define all variables at the top of the function.  The assignment of nullable parameters may proceed variable definitions.</p>
+
+<div class="highlight highlight-javascript"><pre><span class="pl-k">var</span> <span class="pl-en">doStuff</span> <span class="pl-k">=</span> <span class="pl-k">function</span> (<span class="pl-smi">options</span>) {
+    options <span class="pl-k">||</span> (options <span class="pl-k">=</span> {});
+
+    <span class="pl-k">var</span> a;
+    <span class="pl-k">var</span> b;
+};</pre></div>
+
+<p>Use of global variables should be minimized. <strong>Implied global variables should never be used</strong>.</p>
+
+<h2>
+<a id="25-function-declarations" class="anchor" href="#25-function-declarations" aria-hidden="true"><span class="octicon octicon-link"></span></a>2.5 Function Declarations</h2>
+
+<p>All functions should be declared before they are used. Inner functions should follow the var statement. This helps make it clear what variables are included in its scope.</p>
+
+<p>There should be no space between the name of a function and the <code>(</code> (left parenthesis) of its parameter list. There should be one space between the <code>)</code> (right parenthesis) and the <code>{</code> (left curly brace) that begins the statement body. The body itself is indented four spaces. The <code>}</code> (right curly brace) is aligned with the line containing the beginning of the declaration of the function.</p>
+
+<div class="highlight highlight-javascript"><pre><span class="pl-k">function</span> <span class="pl-en">outer</span>(<span class="pl-smi">c</span>, <span class="pl-smi">d</span>) {
+    <span class="pl-k">var</span> e <span class="pl-k">=</span> c <span class="pl-k">*</span> d;
+
+    <span class="pl-k">function</span> <span class="pl-en">inner</span>(<span class="pl-smi">a</span>, <span class="pl-smi">b</span>) {
+        <span class="pl-k">return</span> (e <span class="pl-k">*</span> a) <span class="pl-k">+</span> b;
+    }
+
+    <span class="pl-k">return</span> <span class="pl-c1">inner</span>(<span class="pl-c1">0</span>, <span class="pl-c1">1</span>);
+}</pre></div>
+
+<p>This convention works well with JavaScript because in JavaScript, functions and object literals can be placed anywhere that an expression is allowed. It provides the best readability with inline functions and complex structures.</p>
+
+<div class="highlight highlight-javascript"><pre><span class="pl-k">function</span> <span class="pl-en">getElementsByClassName</span>(<span class="pl-smi">className</span>) {
+    <span class="pl-k">var</span> results <span class="pl-k">=</span> [];
+    <span class="pl-c1">walkTheDOM</span>(<span class="pl-c1">document</span>.<span class="pl-c1">body</span>, <span class="pl-k">function</span> (<span class="pl-smi">node</span>) {
+        <span class="pl-k">var</span> a;                  <span class="pl-c">// array of class names</span>
+        <span class="pl-k">var</span> c <span class="pl-k">=</span> node.<span class="pl-c1">className</span>; <span class="pl-c">// the node's classname</span>
+        <span class="pl-k">var</span> i;                  <span class="pl-c">// loop counter</span>
+
+        <span class="pl-c">// If the node has a class name, then split it into a list of simple names.</span>
+        <span class="pl-c">// If any of them match the requested name, then append the node to the set of results.</span>
+
+        <span class="pl-k">if</span> (c) {
+            a <span class="pl-k">=</span> c.<span class="pl-c1">split</span>(<span class="pl-s"><span class="pl-pds">'</span> <span class="pl-pds">'</span></span>);
+            <span class="pl-k">for</span> (i <span class="pl-k">=</span> <span class="pl-c1">0</span>; i <span class="pl-k">&lt;</span> a.<span class="pl-c1">length</span>; i <span class="pl-k">+=</span> <span class="pl-c1">1</span>) {
+                <span class="pl-k">if</span> (a[i] <span class="pl-k">===</span> className) {
+                    results.<span class="pl-c1">push</span>(node);
+                    <span class="pl-k">break</span>;
+                }
+            }
+        }
+    });
+    <span class="pl-k">return</span> results;
+}</pre></div>
+
+<p>If a function literal is anonymous, there should be one space between the word function and the <code>(</code> (left parenthesis). If the space is omitted, then it can appear that the function's name is function, which is an incorrect reading.</p>
+
+<div class="highlight highlight-javascript"><pre><span class="pl-c1">div</span>.<span class="pl-en">onclick</span> <span class="pl-k">=</span> <span class="pl-k">function</span> (<span class="pl-smi">e</span>) {
+    <span class="pl-k">return</span> <span class="pl-c1">false</span>;
+};
+
+that <span class="pl-k">=</span> {
+    <span class="pl-en">method</span><span class="pl-k">:</span> <span class="pl-k">function</span> () {
+        <span class="pl-k">return</span> <span class="pl-v">this</span>.<span class="pl-c1">datum</span>;
+    },
+    datum<span class="pl-k">:</span> <span class="pl-c1">0</span>
+};</pre></div>
+
+<p>Use of global functions should be minimized.</p>
+
+<p>When a function is to be invoked immediately, the entire invocation expression should be wrapped in parens so that it is clear that the value being produced is the result of the function and not the function itself.</p>
+
+<div class="highlight highlight-javascript"><pre><span class="pl-k">var</span> collection <span class="pl-k">=</span> (<span class="pl-k">function</span> () {
+    <span class="pl-k">var</span> keys <span class="pl-k">=</span> [];
+    <span class="pl-k">var</span> values <span class="pl-k">=</span> [];
+
+    <span class="pl-k">return</span> {
+        <span class="pl-en">get</span><span class="pl-k">:</span> <span class="pl-k">function</span> (<span class="pl-smi">key</span>) {
+            <span class="pl-k">var</span> at <span class="pl-k">=</span> keys.<span class="pl-c1">indexOf</span>(key);
+            <span class="pl-k">if</span> (at <span class="pl-k">&gt;=</span> <span class="pl-c1">0</span>) {
+                <span class="pl-k">return</span> values[at];
+            }
+        },
+        <span class="pl-en">set</span><span class="pl-k">:</span> <span class="pl-k">function</span> (<span class="pl-smi">key</span>, <span class="pl-smi">value</span>) {
+            <span class="pl-k">var</span> at <span class="pl-k">=</span> keys.<span class="pl-c1">indexOf</span>(key);
+            <span class="pl-k">if</span> (at <span class="pl-k">&lt;</span> <span class="pl-c1">0</span>) {
+                at <span class="pl-k">=</span> keys.<span class="pl-c1">length</span>;
+            }
+            keys[at] <span class="pl-k">=</span> key;
+            values[at] <span class="pl-k">=</span> value;
+        },
+        <span class="pl-en">remove</span><span class="pl-k">:</span> <span class="pl-k">function</span> (<span class="pl-smi">key</span>) {
+            <span class="pl-k">var</span> at <span class="pl-k">=</span> keys.<span class="pl-c1">indexOf</span>(key);
+            <span class="pl-k">if</span> (at <span class="pl-k">&gt;=</span> <span class="pl-c1">0</span>) {
+                keys.<span class="pl-c1">splice</span>(at, <span class="pl-c1">1</span>);
+                values.<span class="pl-c1">splice</span>(at, <span class="pl-c1">1</span>);
+            }
+        }
+    };
+}());</pre></div>
+
+<h2>
+<a id="260-statements" class="anchor" href="#260-statements" aria-hidden="true"><span class="octicon octicon-link"></span></a>2.6.0 Statements</h2>
+
+<h3>
+<a id="261-simple-statements" class="anchor" href="#261-simple-statements" aria-hidden="true"><span class="octicon octicon-link"></span></a>2.6.1 Simple Statements</h3>
+
+<p>Each line should contain at most one statement. Put a <code>;</code> (semicolon) at the end of every simple statement. Note that an assignment statement which is assigning a function literal or object literal is still an assignment statement and must end with a semicolon.</p>
+
+<p>JavaScript allows any expression to be used as a statement. This can mask some errors, particularly in the presence of semicolon insertion. The only expressions that should be used as statements are assignments and invocations.</p>
+
+<h3>
+<a id="262-compound-statements" class="anchor" href="#262-compound-statements" aria-hidden="true"><span class="octicon octicon-link"></span></a>2.6.2 Compound Statements</h3>
+
+<p>Compound statements are statements that contain lists of statements enclosed in { } (curly braces).</p>
+
+<ul>
+<li>The enclosed statements should be indented four more spaces.</li>
+<li>The <code>{</code> (left curly brace) should be at the end of the line that begins the compound statement.</li>
+<li>The <code>}</code> (right curly brace) should begin a line and be indented to align with the beginning of the line containing the matching <code>{</code> (left curly brace).</li>
+<li>Braces should be used around all statements, even single statements, when they are part of a control structure, such as an if or for statement. This makes it easier to add statements without accidentally introducing bugs.</li>
+</ul>
+
+<h3>
+<a id="263-return-statement" class="anchor" href="#263-return-statement" aria-hidden="true"><span class="octicon octicon-link"></span></a>2.6.3 <code>return</code> Statement</h3>
+
+<p>A return statement with a value should not use <code>( )</code> (parentheses) around the value. The return value expression must start on the same line as the return keyword in order to avoid semicolon insertion.</p>
+
+<h3>
+<a id="264-if-statement" class="anchor" href="#264-if-statement" aria-hidden="true"><span class="octicon octicon-link"></span></a>2.6.4 <code>if</code> Statement</h3>
+
+<p>The if class of statements should have the following form:</p>
+
+<div class="highlight highlight-javascript"><pre><span class="pl-k">if</span> (condition) {
+    statements
+}
+
+<span class="pl-k">if</span> (condition) {
+    statements
+} <span class="pl-k">else</span> {
+    statements
+}
+
+<span class="pl-k">if</span> (condition) {
+    statements
+} <span class="pl-k">else</span> <span class="pl-k">if</span> (condition) {
+    statements
+} <span class="pl-k">else</span> {
+    statements
+}</pre></div>
+
+<h3>
+<a id="265-for-statement" class="anchor" href="#265-for-statement" aria-hidden="true"><span class="octicon octicon-link"></span></a>2.6.5 <code>for</code> Statement</h3>
+
+<p>A for class of statements should have the following form:</p>
+
+<div class="highlight highlight-javascript"><pre><span class="pl-k">for</span> (initialization; condition; update) {
+    statements
+}
+
+<span class="pl-k">for</span> (variable <span class="pl-k">in</span> object) {
+    <span class="pl-k">if</span> (object.<span class="pl-c1">hasOwnProperty</span>(variable)) {
+        statements
+    } 
+}</pre></div>
+
+<p>The first form should be used with arrays and with loops of a predeterminable number of iterations.</p>
+
+<p>The second form should be used with objects. Be aware that members that are added to the prototype of the object will be included in the enumeration. It is wise to program defensively by using the hasOwnProperty method to distinguish the true members of the object:</p>
+
+<div class="highlight highlight-javascript"><pre><span class="pl-k">for</span> (variable <span class="pl-k">in</span> object) {
+    <span class="pl-k">if</span> (object.<span class="pl-c1">hasOwnProperty</span>(variable)) {
+        statements
+    } 
+}</pre></div>
+
+<h3>
+<a id="266-while-statement" class="anchor" href="#266-while-statement" aria-hidden="true"><span class="octicon octicon-link"></span></a>2.6.6 <code>while</code> Statement</h3>
+
+<p>A while statement should have the following form:</p>
+
+<div class="highlight highlight-javascript"><pre><span class="pl-k">while</span> (condition) {
+    statements
+}</pre></div>
+
+<h3>
+<a id="267-do-statement" class="anchor" href="#267-do-statement" aria-hidden="true"><span class="octicon octicon-link"></span></a>2.6.7 <code>do</code> Statement</h3>
+
+<p>A do statement should have the following form:</p>
+
+<div class="highlight highlight-javascript"><pre><span class="pl-k">do</span> {
+    statements
+} <span class="pl-k">while</span> (condition);</pre></div>
+
+<p>Unlike the other compound statements, the do statement always ends with a <code>;</code> (semicolon).</p>
+
+<h3>
+<a id="268-switch-statement" class="anchor" href="#268-switch-statement" aria-hidden="true"><span class="octicon octicon-link"></span></a>2.6.8 <code>switch</code> Statement</h3>
+
+<p>A switch statement should have the following form:</p>
+
+<div class="highlight highlight-javascript"><pre><span class="pl-k">switch</span> (expression) {
+<span class="pl-k">case</span> expression<span class="pl-k">:</span>
+    statements
+<span class="pl-k">default</span><span class="pl-k">:</span>
+    statements
+}</pre></div>
+
+<p>Each case is aligned with the switch. This avoids over-indentation.</p>
+
+<p>Each group of statements (except the default) should end with <code>break</code>, <code>return</code>, or <code>throw</code>. Do not fall through.</p>
+
+<h3>
+<a id="269-try-statement" class="anchor" href="#269-try-statement" aria-hidden="true"><span class="octicon octicon-link"></span></a>2.6.9 <code>try</code> Statement</h3>
+
+<p>The try class of statements should have the following form:</p>
+
+<div class="highlight highlight-javascript"><pre><span class="pl-k">try</span> {
+    statements
+} <span class="pl-k">catch</span> (variable) {
+    statements
+}
+
+<span class="pl-k">try</span> {
+    statements
+} <span class="pl-k">catch</span> (variable) {
+    statements
+} <span class="pl-k">finally</span> {
+    statements
+}</pre></div>
+
+<h3>
+<a id="2610-continue-statement" class="anchor" href="#2610-continue-statement" aria-hidden="true"><span class="octicon octicon-link"></span></a>2.6.10 <code>continue</code> Statement</h3>
+
+<p>Avoid use of the <code>continue</code> statement. It tends to obscure the control flow of the function.</p>
+
+<h3>
+<a id="2611-with-statement" class="anchor" href="#2611-with-statement" aria-hidden="true"><span class="octicon octicon-link"></span></a>2.6.11 <code>with</code> Statement</h3>
+
+<p>The <code>with</code> statement <a href="http://yuiblog.com/blog/2006/04/11/with-statement-considered-harmful/">should not be used</a>.</p>
+
+<h3>
+<a id="2612-testing-for-equality-or-inequality" class="anchor" href="#2612-testing-for-equality-or-inequality" aria-hidden="true"><span class="octicon octicon-link"></span></a>2.6.12 Testing for Equality or Inequality</h3>
+
+<p>JavaScript has two sets of equality operators: <code>===</code> and <code>!==</code>, and their evil twins <code>==</code> and <code>!=</code>. The good ones work the way you would expect. If the two operands are of the same type and have the same value, then === produces true and !== produces false. The evil twins do the right thing when the operands are of the same type, but if they are of different types, they attempt to coerce the values. the rules by which they do that are complicated and unmemorable. These are some of the interesting cases:</p>
+
+<div class="highlight highlight-javascript"><pre><span class="pl-s"><span class="pl-pds">'</span><span class="pl-pds">'</span></span> <span class="pl-k">==</span> <span class="pl-s"><span class="pl-pds">'</span>0<span class="pl-pds">'</span></span>           <span class="pl-c">// false</span>
+<span class="pl-c1">0</span> <span class="pl-k">==</span> <span class="pl-s"><span class="pl-pds">'</span><span class="pl-pds">'</span></span>             <span class="pl-c">// true</span>
+<span class="pl-c1">0</span> <span class="pl-k">==</span> <span class="pl-s"><span class="pl-pds">'</span>0<span class="pl-pds">'</span></span>            <span class="pl-c">// true</span>
+
+<span class="pl-c1">false</span> <span class="pl-k">==</span> <span class="pl-s"><span class="pl-pds">'</span>false<span class="pl-pds">'</span></span>    <span class="pl-c">// false</span>
+<span class="pl-c1">false</span> <span class="pl-k">==</span> <span class="pl-s"><span class="pl-pds">'</span>0<span class="pl-pds">'</span></span>        <span class="pl-c">// true</span>
+
+<span class="pl-c1">false</span> <span class="pl-k">==</span> <span class="pl-c1">undefined</span>  <span class="pl-c">// false</span>
+<span class="pl-c1">false</span> <span class="pl-k">==</span> <span class="pl-c1">null</span>       <span class="pl-c">// false</span>
+<span class="pl-c1">null</span> <span class="pl-k">==</span> <span class="pl-c1">undefined</span>   <span class="pl-c">// true</span>
+
+<span class="pl-s"><span class="pl-pds">'</span> <span class="pl-cce">\t\r\n</span> <span class="pl-pds">'</span></span> <span class="pl-k">==</span> <span class="pl-c1">0</span>     <span class="pl-c">// true</span></pre></div>
+
+<p>The lack of transitivity is alarming. My advice is to never use the evil twins. </p>
+
+<p><strong>Instead, always use <code>=== and !==</code>.</strong></p>
+
+<p>All of the comparisons just shown produce false with the <code>===</code> operator.</p>
+
+<h2>
+<a id="27-whitespace" class="anchor" href="#27-whitespace" aria-hidden="true"><span class="octicon octicon-link"></span></a>2.7 Whitespace</h2>
+
+<p>Blank lines improve readability by setting off sections of code that are logically related.</p>
+
+<p>Blank spaces should be used in the following circumstances:</p>
+
+<ul>
+<li>A keyword followed by ( (left parenthesis) should be separated by a space.
+<code>javascript
+while (true) {
+</code>
+</li>
+<li>A blank space should not be used between a function value and its <code>(</code> (left parenthesis). This helps to distinguish between keywords and function invocations.</li>
+<li>All binary operators except <code>.</code> (period) and <code>(</code> (left parenthesis) and <code>[</code> (left bracket) should be separated from their operands by a space.</li>
+<li>No space should separate a unary operator and its operand except when the operator is a word such as typeof.</li>
+<li>Each <code>;</code> (semicolon) in the control part of a for statement should be followed with a space.</li>
+<li>Whitespace should follow every <code>,</code> (comma).</li>
+</ul>
+
+<h2>
+<a id="28-dos" class="anchor" href="#28-dos" aria-hidden="true"><span class="octicon octicon-link"></span></a>2.8 Do's</h2>
+
+<ul>
+<li>Parentheses - Only where required.</li>
+<li>Use of JS compilers such as the <a href="http://code.google.com/closure/compiler/">Closure Compiler</a> or <a href="http://developer.yahoo.com/yui/compressor/">YUI Compressor</a> is encouraged.</li>
+<li>Use ternary expressions in <code>return</code> statements.
+<code>javascript
+return val ? foo() : bar();
+</code>
+</li>
+<li>Use array and object literals</li>
+<li>Commit often</li>
+<li>Use JSHint in your editor. <a href="http://fgnass.posterous.com/jslint-in-textmate">TextMate Bundle</a>
+</li>
+</ul>
+
+<h2>
+<a id="290-donts" class="anchor" href="#290-donts" aria-hidden="true"><span class="octicon octicon-link"></span></a>2.9.0 Don'ts</h2>
+
+<h3>
+<a id="291-use-of-coffeescript-in-production" class="anchor" href="#291-use-of-coffeescript-in-production" aria-hidden="true"><span class="octicon octicon-link"></span></a>2.9.1 Use of CoffeeScript in Production</h3>
+
+<blockquote>
+<p>"I love CoffeeScript, I think CoffeeScript is a brilliant experiment.  It shows that if you take just the good parts of javascript and put a much better syntax on it, it's a really lovely programming language. I wish javascript looked a lot more like CoffeeScript.  That said, I would be careful where you use CoffeeScript.  I think it makes a lot of sense for experimentation, for prototypes, for one-offs, for hobbies...  I would not use it in production.  It's not a fully baked language, it's not a standard language, it's not fair to require anyone who might come after you..." - Douglas Crockford</p>
+
+<p>"I don't always use CoffeeScript, but when I do, I stay the hell AWAY from production." - The Most Interesting Man in the World</p>
+</blockquote>
+
+<h3>
+<a id="292-modification-of-built-in-objects-and-custom-libraries" class="anchor" href="#292-modification-of-built-in-objects-and-custom-libraries" aria-hidden="true"><span class="octicon octicon-link"></span></a>2.9.2 Modification of Built-in Objects and Custom Libraries</h3>
+
+<div class="highlight highlight-javascript"><pre><span class="pl-c1">String</span>.<span class="pl-c1">prototype</span>.<span class="pl-en">toTitleCase</span> <span class="pl-k">=</span> <span class="pl-k">function</span> () {
+    <span class="pl-c">// ...</span>
+};</pre></div>
+
+<p>Modifying 3rd party libraries should be a last resort and proper documentation should be made if done.</p>
+
+<ul>
+<li>Rename the file to make it clear: highcharts.v2.1.custom.js</li>
+<li>Insert comments on change lines.</li>
+<li>Make separate commits for each change.</li>
+</ul>
+
+<h3>
+<a id="293-confusing-pluses-and-minuses" class="anchor" href="#293-confusing-pluses-and-minuses" aria-hidden="true"><span class="octicon octicon-link"></span></a>2.9.3 Confusing Pluses and Minuses</h3>
+
+<p>Be careful to not follow a <code>+</code> with <code>+</code> or <code>++</code>. This pattern can be confusing. Insert parens between them to make your intention clear.</p>
+
+<div class="highlight highlight-javascript"><pre>total <span class="pl-k">=</span> subtotal <span class="pl-k">+</span> <span class="pl-k">+</span>myInput.<span class="pl-c1">value</span>;</pre></div>
+
+<p>is better written as</p>
+
+<div class="highlight highlight-javascript"><pre>total <span class="pl-k">=</span> subtotal <span class="pl-k">+</span> (<span class="pl-k">+</span>myInput.<span class="pl-c1">value</span>);</pre></div>
+
+<p>so that the <code>+ +</code> is not misread as <code>++</code>.</p>
+
+<h3>
+<a id="294-eval-is-evil" class="anchor" href="#294-eval-is-evil" aria-hidden="true"><span class="octicon octicon-link"></span></a>2.9.4 <code>eval</code> is Evil</h3>
+
+<p>The <code>eval</code> function is the most misused feature of JavaScript. Avoid it.</p>
+
+<p><code>eval</code> has aliases. Do not use the <code>Function</code> constructor. Do not pass strings to <code>setTimeout</code> or <code>setInterval</code>.</p>
+
+<h3>
+<a id="295-internet-explorers-conditional-comments" class="anchor" href="#295-internet-explorers-conditional-comments" aria-hidden="true"><span class="octicon octicon-link"></span></a>2.9.5 Internet Explorer's Conditional Comments</h3>
+
+<p><img src="http://i.imgur.com/CGNQq.jpg" alt="Admiral Ackbar does not use IE conditional comments"></p>
+
+<blockquote>
+<h3>
+<a id="its-a-trap" class="anchor" href="#its-a-trap" aria-hidden="true"><span class="octicon octicon-link"></span></a>It's a TRAP!</h3>
+</blockquote>
+
+<h3>
+<a id="296-multiline-string-literals" class="anchor" href="#296-multiline-string-literals" aria-hidden="true"><span class="octicon octicon-link"></span></a>2.9.6 Multiline String Literals</h3>
+
+<p>Do not do this:</p>
+
+<div class="highlight highlight-javascript"><pre><span class="pl-k">var</span> myString <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">'</span>A rather long string of English text, an error message \</span>
+<span class="pl-s">                actually that just keeps going and going -- an error \</span>
+<span class="pl-s">                message to make the Energizer bunny blush (right through \</span>
+<span class="pl-s">                those Schwarzenegger shades)! Where was I? Oh yes, \</span>
+<span class="pl-s">                you<span class="pl-cce">\'</span>ve got an error and all the extraneous whitespace is \</span>
+<span class="pl-s">                just gravy.  Have a nice day.<span class="pl-pds">'</span></span>;</pre></div>
+
+<p>Concatenate instead:</p>
+
+<div class="highlight highlight-javascript"><pre><span class="pl-k">var</span> myString <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">'</span>A rather long string of English text, an error message <span class="pl-pds">'</span></span> <span class="pl-k">+</span>
+    <span class="pl-s"><span class="pl-pds">'</span>actually that just keeps going and going -- an error <span class="pl-pds">'</span></span> <span class="pl-k">+</span>
+    <span class="pl-s"><span class="pl-pds">'</span>message to make the Energizer bunny blush (right through <span class="pl-pds">'</span></span> <span class="pl-k">+</span>
+    <span class="pl-s"><span class="pl-pds">'</span>those Schwarzenegger shades)! Where was I? Oh yes, <span class="pl-pds">'</span></span> <span class="pl-k">+</span>
+    <span class="pl-s"><span class="pl-pds">'</span>you<span class="pl-cce">\'</span>ve got an error and all the extraneous whitespace is <span class="pl-pds">'</span></span> <span class="pl-k">+</span>
+    <span class="pl-s"><span class="pl-pds">'</span>just gravy.  Have a nice day.<span class="pl-pds">'</span></span>;</pre></div>
+
+<h1>
+<a id="30-html-and-css-1" class="anchor" href="#30-html-and-css-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>3.0 HTML and CSS</h1>
+
+<h2>
+<a id="31-the-html-head-and-body-elements" class="anchor" href="#31-the-html-head-and-body-elements" aria-hidden="true"><span class="octicon octicon-link"></span></a>3.1 The <code>&lt;html&gt;</code>, <code>&lt;head&gt;</code>, and <code>&lt;body&gt;</code> Elements</h2>
+
+<p>HTML5 doesn’t require the <code>&lt;html&gt;</code>, <code>&lt;head&gt;</code> and <code>&lt;body&gt;</code> elements (browsers add them if missing), but you should always use them!</p>
+
+<p>If, for example, you omit the <code>&lt;body&gt;</code> element in IE, use the html5shiv and don't have any visible content (like text, images, etc.) in front of a new HTML5 element, that element with all the content from inside it will be included by IE in the <code>&lt;head&gt;</code> element.</p>
+
+<h2>
+<a id="32-doctype-and-encoding" class="anchor" href="#32-doctype-and-encoding" aria-hidden="true"><span class="octicon octicon-link"></span></a>3.2 Doctype and Encoding</h2>
+
+<p>Always use the HTML5 doctype <code>&lt;!doctype html&gt;</code> and utf-8 encoding <code>&lt;meta charset="utf-8"&gt;</code>.</p>
+
+<p>The encoding should come in the first <a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/semantics.html#charset">1024 Bytes</a></p>
+
+<h2>
+<a id="330-other-important-meta-elements" class="anchor" href="#330-other-important-meta-elements" aria-hidden="true"><span class="octicon octicon-link"></span></a>3.3.0 Other Important <code>&lt;meta&gt;</code> Elements</h2>
+
+<h3>
+<a id="331-use-the-latest-rendering-engine" class="anchor" href="#331-use-the-latest-rendering-engine" aria-hidden="true"><span class="octicon octicon-link"></span></a>3.3.1 Use the Latest Rendering Engine</h3>
+
+<p>Versions 8 and 9 of Internet Explorer contain multiple rendering engines. So even if a site visitor is using IE8 or IE9, it’s possible that they're not using the latest rendering engine their browser contains. To fix this, use:</p>
+
+<div class="highlight highlight-html"><pre>&lt;<span class="pl-ent">meta</span> <span class="pl-e">http-equiv</span>=<span class="pl-s"><span class="pl-pds">"</span>X-UA-Compatible<span class="pl-pds">"</span></span> <span class="pl-e">content</span>=<span class="pl-s"><span class="pl-pds">"</span>IE=edge,chrome=1<span class="pl-pds">"</span></span>&gt;</pre></div>
+
+<p>The meta element tells the IE rendering engine two things:</p>
+
+<ol>
+<li>It should use the latest, or edge, version of the IE rendering environment</li>
+<li>If already installed, it should use the Google Chrome Frame rendering engine.</li>
+</ol>
+
+<p>This meta element ensures that anyone browsing your site in IE is treated to the best possible user experience that their browser can offer.</p>
+
+<h3>
+<a id="332-mobile-viewport" class="anchor" href="#332-mobile-viewport" aria-hidden="true"><span class="octicon octicon-link"></span></a>3.3.2 Mobile Viewport</h3>
+
+<div class="highlight highlight-html"><pre>&lt;<span class="pl-ent">meta</span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>viewport<span class="pl-pds">"</span></span> <span class="pl-e">content</span>=<span class="pl-s"><span class="pl-pds">"</span>width=device-width<span class="pl-pds">"</span></span>&gt;</pre></div>
+
+<p>There are a few different options that you can use with this meta element. You can find out more in the <a href="http://j.mp/mobileviewport">Apple developer docs</a>.</p>
+
+<h2>
+<a id="34-optimized-google-analytics-snippet" class="anchor" href="#34-optimized-google-analytics-snippet" aria-hidden="true"><span class="octicon octicon-link"></span></a>3.4 Optimized Google Analytics Snippet</h2>
+
+<div class="highlight highlight-html"><pre><span class="pl-c">&lt;!-- Google Analytics: change UA-XXXXX-X to be your site's ID. --&gt;</span>
+<span class="pl-s1">&lt;<span class="pl-ent">script</span>&gt;</span>
+<span class="pl-s1">    (<span class="pl-k">function</span>(<span class="pl-smi">b</span>,<span class="pl-smi">o</span>,<span class="pl-smi">i</span>,<span class="pl-smi">l</span>,<span class="pl-smi">e</span>,<span class="pl-smi">r</span>){b.<span class="pl-c1">GoogleAnalyticsObject</span><span class="pl-k">=</span>l;b[l]<span class="pl-k">||</span>(b[l]<span class="pl-k">=</span></span>
+<span class="pl-s1">    <span class="pl-k">function</span>(){(b[l].<span class="pl-c1">q</span><span class="pl-k">=</span>b[l].<span class="pl-c1">q</span><span class="pl-k">||</span>[]).<span class="pl-c1">push</span>(arguments)});b[l].<span class="pl-c1">l</span><span class="pl-k">=+</span><span class="pl-k">new</span> <span class="pl-en">Date</span>;</span>
+<span class="pl-s1">    e<span class="pl-k">=</span>o.<span class="pl-c1">createElement</span>(i);r<span class="pl-k">=</span>o.<span class="pl-c1">getElementsByTagName</span>(i)[<span class="pl-c1">0</span>];</span>
+<span class="pl-s1">    e.<span class="pl-c1">src</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>//www.google-analytics.com/analytics.js<span class="pl-pds">'</span></span>;</span>
+<span class="pl-s1">    r.<span class="pl-c1">parentNode</span>.<span class="pl-c1">insertBefore</span>(e,r)}(<span class="pl-c1">window</span>,<span class="pl-c1">document</span>,<span class="pl-s"><span class="pl-pds">'</span>script<span class="pl-pds">'</span></span>,<span class="pl-s"><span class="pl-pds">'</span>ga<span class="pl-pds">'</span></span>));</span>
+<span class="pl-s1">    <span class="pl-c1">ga</span>(<span class="pl-s"><span class="pl-pds">'</span>create<span class="pl-pds">'</span></span>,<span class="pl-s"><span class="pl-pds">'</span>UA-XXXXX-X<span class="pl-pds">'</span></span>);<span class="pl-c1">ga</span>(<span class="pl-s"><span class="pl-pds">'</span>send<span class="pl-pds">'</span></span>,<span class="pl-s"><span class="pl-pds">'</span>pageview<span class="pl-pds">'</span></span>);</span>
+<span class="pl-s1">&lt;/<span class="pl-ent">script</span>&gt;</span></pre></div>
+
+<p><a href="http://mathiasbynens.be/notes/async-analytics-snippet">How it works</a></p>
+
+<h2>
+<a id="350-html-formatting" class="anchor" href="#350-html-formatting" aria-hidden="true"><span class="octicon octicon-link"></span></a>3.5.0 HTML Formatting</h2>
+
+<p>Use a new line for every block, list, or table element, and indent every such child element.
+Independent of the styling of an element (as CSS allows elements to assume a different role per display property), put every block, list, or table element on a new line.</p>
+
+<p>Also, indent them if they are child elements of a block, list, or table element.</p>
+
+<p>(If you run into issues around whitespace between list items it is acceptable to put all li elements in one line. A linter is encouraged to throw a warning instead of an error.)</p>
+
+<div class="highlight highlight-html"><pre>&lt;<span class="pl-ent">blockquote</span>&gt;
+    &lt;<span class="pl-ent">p</span>&gt;&lt;<span class="pl-ent">em</span>&gt;Space&lt;/<span class="pl-ent">em</span>&gt;, the final frontier.&lt;/<span class="pl-ent">p</span>&gt;
+&lt;/<span class="pl-ent">blockquote</span>&gt;</pre></div>
+
+<div class="highlight highlight-html"><pre>&lt;<span class="pl-ent">ul</span>&gt;
+    &lt;<span class="pl-ent">li</span>&gt;Moe&lt;/<span class="pl-ent">li</span>&gt;
+    &lt;<span class="pl-ent">li</span>&gt;Larry&lt;/<span class="pl-ent">li</span>&gt;
+    &lt;<span class="pl-ent">li</span>&gt;Curly&lt;/<span class="pl-ent">li</span>&gt;
+&lt;/<span class="pl-ent">ul</span>&gt;
+&lt;<span class="pl-ent">table</span>&gt;
+    &lt;<span class="pl-ent">thead</span>&gt;
+        &lt;<span class="pl-ent">tr</span>&gt;
+            &lt;<span class="pl-ent">th</span> <span class="pl-e">scope</span>=<span class="pl-s"><span class="pl-pds">"</span>col<span class="pl-pds">"</span></span>&gt;Income&lt;/<span class="pl-ent">th</span>&gt;
+            &lt;<span class="pl-ent">th</span> <span class="pl-e">scope</span>=<span class="pl-s"><span class="pl-pds">"</span>col<span class="pl-pds">"</span></span>&gt;Taxes&lt;/<span class="pl-ent">th</span>&gt;
+        &lt;/<span class="pl-ent">tr</span>&gt;
+    &lt;/<span class="pl-ent">thead</span>&gt;
+    &lt;<span class="pl-ent">tbody</span>&gt;
+        &lt;<span class="pl-ent">tr</span>&gt;
+            &lt;<span class="pl-ent">td</span>&gt;$ 5.00&lt;/<span class="pl-ent">td</span>&gt;
+            &lt;<span class="pl-ent">td</span>&gt;$ 4.50&lt;/<span class="pl-ent">td</span>&gt;
+        &lt;/<span class="pl-ent">tr</span>&gt;
+    &lt;/<span class="pl-ent">tbody</span>&gt;
+&lt;/<span class="pl-ent">table</span>&gt;</pre></div>
+
+<p>Do not leave off optional closing tags as it's easy to get confused and leave of required closing tags and confuse readers who don't know what is optional.</p>
+
+<p>If you're concerned about saving file size, use an html compiler.</p>
+
+<div class="highlight highlight-html"><pre><span class="pl-c">&lt;!-- Not recommended --&gt;</span>
+&lt;<span class="pl-ent">ul</span>&gt;
+    &lt;<span class="pl-ent">li</span>&gt;This
+    &lt;<span class="pl-ent">li</span>&gt;Is
+    &lt;<span class="pl-ent">li</span>&gt;Wrong
+&lt;/<span class="pl-ent">ul</span>&gt;
+<span class="pl-c">&lt;!-- Recommended --&gt;</span>
+&lt;<span class="pl-ent">ul</span>&gt;
+    &lt;<span class="pl-ent">li</span>&gt;This&lt;/<span class="pl-ent">li</span>&gt;
+    &lt;<span class="pl-ent">li</span>&gt;Is&lt;/<span class="pl-ent">li</span>&gt;
+    &lt;<span class="pl-ent">li</span>&gt;Wrong&lt;/<span class="pl-ent">li</span>&gt;
+&lt;/<span class="pl-ent">ul</span>&gt;</pre></div>
+
+<h3>
+<a id="351-quotes" class="anchor" href="#351-quotes" aria-hidden="true"><span class="octicon octicon-link"></span></a>3.5.1 Quotes</h3>
+
+<p>In HTML, we use <code>"</code> (double quotes) around attribute values, like this:</p>
+
+<div class="highlight highlight-html"><pre>&lt;<span class="pl-ent">a</span> <span class="pl-e">href</span>=<span class="pl-s"><span class="pl-pds">"</span>foo<span class="pl-pds">"</span></span>&gt;bar&lt;/<span class="pl-ent">a</span>&gt;</pre></div>
+
+<p>This way, we can use consistent quotes when writing HTML inside of JS:</p>
+
+<div class="highlight highlight-javascript"><pre><span class="pl-c1">alert</span>(<span class="pl-s"><span class="pl-pds">'</span>&lt;a href="foo"&gt;bar&lt;/a&gt;<span class="pl-pds">'</span></span>);</pre></div>
+
+<h3>
+<a id="352-capitalization" class="anchor" href="#352-capitalization" aria-hidden="true"><span class="octicon octicon-link"></span></a>3.5.2 Capitalization</h3>
+
+<p>Use lowercase only.</p>
+
+<p>All code has to be lowercase: this applies to element names, attributes, attribute values (unless text/CDATA), selectors, properties, and property values (with the exception of strings).</p>
+
+<h3>
+<a id="353-trailing-whitespace" class="anchor" href="#353-trailing-whitespace" aria-hidden="true"><span class="octicon octicon-link"></span></a>3.5.3 Trailing Whitespace</h3>
+
+<p>Remove trailing white spaces.
+Trailing white spaces are unnecessary and can complicate diffs.</p>
+
+<h3>
+<a id="354-entity-references" class="anchor" href="#354-entity-references" aria-hidden="true"><span class="octicon octicon-link"></span></a>3.5.4 Entity References</h3>
+
+<p>Use entity references only where required <code>&lt;</code>, <code>&gt;</code>, and <code>&amp;</code>  as well as control or "invisible" characters (like no-break spaces).</p>
+
+<p>There is no need to use entity references like —, ”, or ☺, assuming the same encoding (UTF-8) is used for files and editors as well as among teams.</p>
+
+<div class="highlight highlight-html"><pre><span class="pl-c">&lt;!-- Not recommended --&gt;</span>
+The currency symbol for the Euro is <span class="pl-c1">&amp;ldquo;&amp;eur;&amp;rdquo;</span>.
+<span class="pl-c">&lt;!-- Recommended --&gt;</span>
+The currency symbol for the Euro is “€”.</pre></div>
+
+<h3>
+<a id="355-optional-elements" class="anchor" href="#355-optional-elements" aria-hidden="true"><span class="octicon octicon-link"></span></a>3.5.5 Optional Elements</h3>
+
+<p>Omitting <a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/syntax.html#syntax-tag-omission">optional elements</a> can be useful for file size optimization, but be clear and consistent.</p>
+
+<h3>
+<a id="356-optional-attributes" class="anchor" href="#356-optional-attributes" aria-hidden="true"><span class="octicon octicon-link"></span></a>3.5.6 Optional Attributes</h3>
+
+<p>Omit optional attributes on script and stylesheets.</p>
+
+<h2>
+<a id="36-semantics" class="anchor" href="#36-semantics" aria-hidden="true"><span class="octicon octicon-link"></span></a>3.6 Semantics</h2>
+
+<p>Use HTML according to its purpose.
+Use elements for what they have been created for. For example, use <code>&lt;header&gt;</code> elements for headings, <code>&lt;p&gt;</code> elements for paragraphs, <code>&lt;a&gt;</code> elements for anchors, etc.</p>
+
+<p>Using HTML according to its purpose is important for accessibility, reuse, and code efficiency reasons.</p>
+
+<div class="highlight highlight-html"><pre><span class="pl-c">&lt;!-- Not recommended --&gt;</span>
+&lt;<span class="pl-ent">div</span> <span class="pl-e">onclick</span>=<span class="pl-s"><span class="pl-pds">"</span>goToRecommendations();<span class="pl-pds">"</span></span>&gt;All recommendations&lt;/<span class="pl-ent">div</span>&gt;
+<span class="pl-c">&lt;!-- Recommended --&gt;</span>
+&lt;<span class="pl-ent">a</span> <span class="pl-e">href</span>=<span class="pl-s"><span class="pl-pds">"</span>recommendations/<span class="pl-pds">"</span></span>&gt;All recommendations&lt;/<span class="pl-ent">a</span>&gt;</pre></div>
+
+<h2>
+<a id="37-separation-of-concerns" class="anchor" href="#37-separation-of-concerns" aria-hidden="true"><span class="octicon octicon-link"></span></a>3.7 Separation of Concerns</h2>
+
+<p>Avoid inline javascript/CSS in markup.</p>
+
+<div class="highlight highlight-html"><pre><span class="pl-c">&lt;!-- Not recommended --&gt;</span>
+&lt;!DOCTYPE html&gt;
+&lt;<span class="pl-ent">title</span>&gt;HTML sucks&lt;/<span class="pl-ent">title</span>&gt;
+&lt;<span class="pl-ent">link</span> <span class="pl-e">rel</span>=<span class="pl-s"><span class="pl-pds">"</span>stylesheet<span class="pl-pds">"</span></span> <span class="pl-e">href</span>=<span class="pl-s"><span class="pl-pds">"</span>base.css<span class="pl-pds">"</span></span> <span class="pl-e">media</span>=<span class="pl-s"><span class="pl-pds">"</span>screen<span class="pl-pds">"</span></span>&gt;
+&lt;<span class="pl-ent">link</span> <span class="pl-e">rel</span>=<span class="pl-s"><span class="pl-pds">"</span>stylesheet<span class="pl-pds">"</span></span> <span class="pl-e">href</span>=<span class="pl-s"><span class="pl-pds">"</span>grid.css<span class="pl-pds">"</span></span> <span class="pl-e">media</span>=<span class="pl-s"><span class="pl-pds">"</span>screen<span class="pl-pds">"</span></span>&gt;
+&lt;<span class="pl-ent">link</span> <span class="pl-e">rel</span>=<span class="pl-s"><span class="pl-pds">"</span>stylesheet<span class="pl-pds">"</span></span> <span class="pl-e">href</span>=<span class="pl-s"><span class="pl-pds">"</span>print.css<span class="pl-pds">"</span></span> <span class="pl-e">media</span>=<span class="pl-s"><span class="pl-pds">"</span>print<span class="pl-pds">"</span></span>&gt;
+&lt;<span class="pl-ent">h1</span> <span class="pl-e">style</span>=<span class="pl-s"><span class="pl-pds">"</span>font-size: 1em;<span class="pl-pds">"</span></span>&gt;HTML sucks&lt;/<span class="pl-ent">h1</span>&gt;
+&lt;<span class="pl-ent">p</span>&gt;I’ve read about this on a few sites but now I’m sure:
+  &lt;<span class="pl-ent">u</span>&gt;HTML is stupid!!1&lt;/<span class="pl-ent">u</span>&gt;
+&lt;<span class="pl-ent">center</span>&gt;I can’t believe there’s no way to control the styling of
+  my website without doing everything all over again!&lt;/<span class="pl-ent">center</span>&gt;</pre></div>
+
+<h2>
+<a id="380-id-and-class-naming" class="anchor" href="#380-id-and-class-naming" aria-hidden="true"><span class="octicon octicon-link"></span></a>3.8.0 ID and Class Naming</h2>
+
+<h3>
+<a id="381-use-meaningful-or-generic-id-and-class-names" class="anchor" href="#381-use-meaningful-or-generic-id-and-class-names" aria-hidden="true"><span class="octicon octicon-link"></span></a>3.8.1 Use Meaningful or Generic ID and Class Names.</h3>
+
+<p>Instead of presentational or cryptic names, always use ID and class names that reflect the purpose of the element in question, or that are otherwise generic.</p>
+
+<p>Names that are specific and reflect the purpose of the element should be preferred as these are most understandable and the least likely to change.</p>
+
+<p>Generic names are simply a fallback for elements that have no particular or no meaning different from their siblings. They are typically needed as "helpers."</p>
+
+<p>Using functional or generic names reduces the probability of unnecessary document or template changes.</p>
+
+<div class="highlight highlight-css"><pre><span class="pl-c">/* Not recommended: meaningless */</span>
+<span class="pl-e">#yee-1901</span> {}
+
+<span class="pl-c">/* Not recommended: presentational */</span>
+<span class="pl-e">.button-green</span> {}
+<span class="pl-e">.clear</span> {}
+
+<span class="pl-c">/* Recommended: specific */</span>
+<span class="pl-e">#gallery</span> {}
+<span class="pl-e">#login</span> {}
+<span class="pl-e">.video</span> {}
+
+<span class="pl-c">/* Recommended: generic */</span>
+<span class="pl-e">.aux</span> {}
+<span class="pl-e">.alt</span> {}</pre></div>
+
+<h3>
+<a id="382-use-names-that-are-as-short-as-possible-but-as-long-as-necessary" class="anchor" href="#382-use-names-that-are-as-short-as-possible-but-as-long-as-necessary" aria-hidden="true"><span class="octicon octicon-link"></span></a>3.8.2 Use Names That Are as Short as Possible but as Long as Necessary</h3>
+
+<p>Try to convey what an ID or class is about while being as brief as possible.</p>
+
+<p>Using ID and class names this way contributes to acceptable levels of understandability and code efficiency.</p>
+
+<div class="highlight highlight-css"><pre><span class="pl-c">/* Not recommended */</span>
+<span class="pl-e">#navigation</span> {}
+<span class="pl-e">.atr</span> {}
+<span class="pl-c">/* Recommended */</span>
+<span class="pl-e">#nav</span> {}
+<span class="pl-e">.author</span> {}</pre></div>
+
+<h2>
+<a id="390-selector-performance" class="anchor" href="#390-selector-performance" aria-hidden="true"><span class="octicon octicon-link"></span></a>3.9.0 Selector Performance</h2>
+
+<p>Selectors are matched right to left.  The right most being the key selector.</p>
+
+<p>Avoiding inefficient key selectors that match large numbers of elements can <a href="https://developers.google.com/speed/docs/best-practices/rendering">speed up page rendering</a>.</p>
+
+<h3>
+<a id="391-avoid-a-universal-key-selector" class="anchor" href="#391-avoid-a-universal-key-selector" aria-hidden="true"><span class="octicon octicon-link"></span></a>3.9.1 Avoid a Universal Key Selector</h3>
+
+<div class="highlight highlight-css"><pre><span class="pl-ent">body</span> <span class="pl-ent">*</span> {...}
+<span class="pl-e">.hide-scrollbars</span> <span class="pl-ent">*</span> {...}</pre></div>
+
+<p>Allow elements to inherit from ancestors, or use a class to apply a style to multiple elements.</p>
+
+<h3>
+<a id="392-make-your-rules-as-specific-as-possible" class="anchor" href="#392-make-your-rules-as-specific-as-possible" aria-hidden="true"><span class="octicon octicon-link"></span></a>3.9.2 Make Your Rules as Specific as Possible</h3>
+
+<p>Prefer class and ID selectors over element selectors.</p>
+
+<h3>
+<a id="393-remove-redundant-qualifiers" class="anchor" href="#393-remove-redundant-qualifiers" aria-hidden="true"><span class="octicon octicon-link"></span></a>3.9.3 Remove Redundant Qualifiers.</h3>
+
+<p>These qualifiers are redundant:</p>
+
+<ul>
+<li>ID selectors qualified by class and/or element selectors</li>
+<li>Class selectors qualified by element selectors (when a class is only used for one tag, which is a good design practice anyway).</li>
+</ul>
+
+<div class="highlight highlight-css"><pre><span class="pl-c">/* Not recommended */</span>
+<span class="pl-ent">ul</span><span class="pl-e">#example</span> {}
+<span class="pl-ent">div</span><span class="pl-e">.error</span> {}
+
+<span class="pl-c">/* Recommended */</span>
+<span class="pl-e">#example</span> {}
+<span class="pl-e">.error</span> {}</pre></div>
+
+<h2>
+<a id="3100-css-formatting" class="anchor" href="#3100-css-formatting" aria-hidden="true"><span class="octicon octicon-link"></span></a>3.10.0 CSS Formatting</h2>
+
+<h3>
+<a id="3101-shorthand-properties" class="anchor" href="#3101-shorthand-properties" aria-hidden="true"><span class="octicon octicon-link"></span></a>3.10.1 Shorthand Properties</h3>
+
+<p>Use shorthand properties where possible.
+CSS offers a variety of shorthand properties (like font) that should be used whenever possible, even in cases where only one value is explicitly set.</p>
+
+<p>Using shorthand properties is useful for code efficiency and understandability.</p>
+
+<div class="highlight highlight-css"><pre><span class="pl-c">/* Not recommended */</span>
+border-top-<span class="pl-ent">style</span>: none;
+font-family: palatino, georgia, serif;
+font-size: 100%;
+line-height: 1<span class="pl-e">.6</span>;
+padding-bottom: 2em;
+padding-left: 1em;
+padding-right: 1em;
+padding-top: 0;
+
+<span class="pl-c">/* Recommended */</span>
+border-top: 0;
+font: 100%/1<span class="pl-e">.6</span> palatino, georgia, serif;
+padding: 0 1em 2em;</pre></div>
+
+<h3>
+<a id="3102-0-and-units" class="anchor" href="#3102-0-and-units" aria-hidden="true"><span class="octicon octicon-link"></span></a>3.10.2 0 and Units</h3>
+
+<p>Do not use units after 0 values unless they are required.</p>
+
+<div class="highlight highlight-css"><pre>margin: 0;
+padding: 0;</pre></div>
+
+<h3>
+<a id="3103-quotation-marks-in-uri-values" class="anchor" href="#3103-quotation-marks-in-uri-values" aria-hidden="true"><span class="octicon octicon-link"></span></a>3.10.3 Quotation Marks in URI Values</h3>
+
+<p>Omit quotation marks in URI values.
+Do not use <code>""</code>, <code>'</code> (quotation marks) with <code>url()</code>.</p>
+
+<div class="highlight highlight-css"><pre><span class="pl-k">@import</span> <span class="pl-c1">url</span>(<span class="pl-v">//www.google.com/css/go.css</span>);</pre></div>
+
+<h3>
+<a id="3104-hexadecimal-notation" class="anchor" href="#3104-hexadecimal-notation" aria-hidden="true"><span class="octicon octicon-link"></span></a>3.10.4 Hexadecimal Notation</h3>
+
+<p>Use 3 character hexadecimal notation where possible.
+For color values that permit it, 3 character hexadecimal notation is shorter and more succinct.</p>
+
+<div class="highlight highlight-css"><pre><span class="pl-c">/* Not recommended */</span>
+color: <span class="pl-e">#eebbcc</span>;
+
+<span class="pl-c">/* Recommended */</span>
+color: <span class="pl-e">#ebc</span>;</pre></div>
+
+<h3>
+<a id="3105-prefixes" class="anchor" href="#3105-prefixes" aria-hidden="true"><span class="octicon octicon-link"></span></a>3.10.5 Prefixes</h3>
+
+<p>Prefix selectors with an application-specific prefix (optional).
+In large projects as well as for code that gets embedded in other projects or on external sites use prefixes (as namespaces) for ID and class names. Use short, unique identifiers followed by a dash.</p>
+
+<p>Using namespaces helps preventing naming conflicts and can make maintenance easier, for example in search and replace operations.</p>
+
+<div class="highlight highlight-css"><pre><span class="pl-e">.adw-help</span> {} <span class="pl-c">/* AdWords */</span>
+<span class="pl-e">#maia-note</span> {} <span class="pl-c">/* Maia */</span></pre></div>
+
+<h3>
+<a id="3106-id-and-class-name-delimiters" class="anchor" href="#3106-id-and-class-name-delimiters" aria-hidden="true"><span class="octicon octicon-link"></span></a>3.10.6 ID and Class Name Delimiters</h3>
+
+<p>Separate words in ID and class names by a hyphen.
+Do not concatenate words and abbreviations in selectors by any characters (including none at all) other than hyphens, in order to improve understanding and scannability.</p>
+
+<div class="highlight highlight-css"><pre><span class="pl-c">/* Not recommended: does not separate the words “demo” and “image” */</span>
+<span class="pl-e">.demoimage</span> {}
+
+<span class="pl-c">/* Not recommended: uses underscore instead of hyphen */</span>
+<span class="pl-e">.error_status</span> {}
+
+<span class="pl-c">/* Recommended */</span>
+<span class="pl-e">#video-id</span> {}
+<span class="pl-e">.ads-sample</span> {}</pre></div>
+
+<h3>
+<a id="3107-order" class="anchor" href="#3107-order" aria-hidden="true"><span class="octicon octicon-link"></span></a>3.10.7 Order</h3>
+
+<p>Alphabetize declarations.
+Put declarations in alphabetical order in order to achieve consistent code in a way that is easy to remember and maintain.</p>
+
+<p>Ignore vendor-specific prefixes for sorting purposes. However, multiple vendor-specific prefixes for a certain CSS property should be kept sorted (e.g. <code>-moz</code> prefix comes before <code>-webkit</code>).</p>
+
+<div class="highlight highlight-css"><pre>background: fuchsia;
+border: 1px solid;
+-moz-border-radius: 4px;
+-webkit-border-radius: 4px;
+border-radius: 4px;
+color: black;
+text-align: center;
+text-indent: 2em;</pre></div>
+
+<h3>
+<a id="3108-block-content-indentation" class="anchor" href="#3108-block-content-indentation" aria-hidden="true"><span class="octicon octicon-link"></span></a>3.10.8 Block Content Indentation</h3>
+
+<p>Indent all block content.
+Indent all block content, that is rules within rules as well as declarations, so to reflect hierarchy and improve understanding.</p>
+
+<div class="highlight highlight-css"><pre><span class="pl-k">@media</span> <span class="pl-c1">screen</span>, <span class="pl-c1">projection</span> {
+    <span class="pl-ent">html</span> {
+        <span class="pl-c1"><span class="pl-c1">background</span></span>: <span class="pl-c1">#fff</span>;
+        <span class="pl-c1"><span class="pl-c1">color</span></span>: <span class="pl-c1">#444</span>;
+    }
+}</pre></div>
+
+<h3>
+<a id="3109-semicolons" class="anchor" href="#3109-semicolons" aria-hidden="true"><span class="octicon octicon-link"></span></a>3.10.9 Semicolons</h3>
+
+<p>Use them.</p>
+
+<h3>
+<a id="31010-property-name-stops" class="anchor" href="#31010-property-name-stops" aria-hidden="true"><span class="octicon octicon-link"></span></a>3.10.10 Property Name Stops</h3>
+
+<p>Use a space after a property name’s colon.
+Always use a single space between property and value (but no space between property and colon) for consistency reasons.</p>
+
+<div class="highlight highlight-css"><pre><span class="pl-c">/* Not recommended */</span>
+<span class="pl-ent">h3</span> {
+    <span class="pl-c1"><span class="pl-c1">font-weight</span></span>:<span class="pl-c1">bold</span>;
+}
+
+<span class="pl-c">/* Recommended */</span>
+<span class="pl-ent">h3</span> {
+    <span class="pl-c1"><span class="pl-c1">font-weight</span></span>: <span class="pl-c1">bold</span>;
+}</pre></div>
+
+<h3>
+<a id="31011-selector-and-declaration-separation" class="anchor" href="#31011-selector-and-declaration-separation" aria-hidden="true"><span class="octicon octicon-link"></span></a>3.10.11 Selector and Declaration Separation</h3>
+
+<p>Separate selectors and declarations by new lines.
+Always start a new line for each selector and declaration.</p>
+
+<div class="highlight highlight-css"><pre><span class="pl-c">/* Not recommended */</span>
+<span class="pl-ent">a</span><span class="pl-e">:focus</span>, <span class="pl-ent">a</span><span class="pl-e">:active</span> {
+    <span class="pl-c1"><span class="pl-c1">position</span></span>: <span class="pl-c1">relative</span>; <span class="pl-c1"><span class="pl-c1">top</span></span>: <span class="pl-c1">1<span class="pl-k">px</span></span>;
+}
+
+<span class="pl-c">/* Recommended */</span>
+<span class="pl-ent">h1</span>,
+<span class="pl-ent">h2</span>,
+<span class="pl-ent">h3</span> {
+    <span class="pl-c1"><span class="pl-c1">font-weight</span></span>: <span class="pl-c1">normal</span>;
+    <span class="pl-c1"><span class="pl-c1">line-height</span></span>: <span class="pl-c1">1.2</span>;
+}</pre></div>
+
+<h3>
+<a id="31012-rule-separation" class="anchor" href="#31012-rule-separation" aria-hidden="true"><span class="octicon octicon-link"></span></a>3.10.12 Rule Separation</h3>
+
+<p>Separate rules by new lines.
+Always put a line between rules.</p>
+
+<div class="highlight highlight-css"><pre><span class="pl-ent">html</span> {
+    <span class="pl-c1"><span class="pl-c1">background</span></span>: <span class="pl-c1">#fff</span>;
+}
+
+<span class="pl-ent">body</span> {
+    <span class="pl-c1"><span class="pl-c1">margin</span></span>: <span class="pl-c1">auto</span>;
+    <span class="pl-c1"><span class="pl-c1">width</span></span>: <span class="pl-c1">50<span class="pl-k">%</span></span>;
+}</pre></div>
+
+<h2>
+<a id="311-conditional-stylesheetscss-hacks" class="anchor" href="#311-conditional-stylesheetscss-hacks" aria-hidden="true"><span class="octicon octicon-link"></span></a>3.11 Conditional Stylesheets/CSS Hacks</h2>
+
+<p><a href="http://paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/">Neither</a></p>
+
+<div class="highlight highlight-html"><pre><span class="pl-c">&lt;!--[if lt IE 7]&gt; &lt;html class="no-js lt-ie9 lt-ie8 lt-ie7"&gt; &lt;![endif]--&gt;</span>
+<span class="pl-c">&lt;!--[if IE 7]&gt;    &lt;html class="no-js lt-ie9 lt-ie8"&gt; &lt;![endif]--&gt;</span>
+<span class="pl-c">&lt;!--[if IE 8]&gt;    &lt;html class="no-js lt-ie9"&gt; &lt;![endif]--&gt;</span>
+<span class="pl-c">&lt;!--[if gt IE 8]&gt;&lt;!--&gt;</span> &lt;<span class="pl-ent">html</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>no-js<span class="pl-pds">"</span></span>&gt; <span class="pl-c">&lt;!--&lt;![endif]--&gt;</span></pre></div>
+
+<div class="highlight highlight-css"><pre><span class="pl-e">.ie8</span> <span class="pl-ent">legend</span> {
+    <span class="pl-c1"><span class="pl-c1">margin-left</span></span>: <span class="pl-c1">20<span class="pl-k">px</span></span>;
+}</pre></div>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/annielmenezes/front-end-code-standards">Front-end-code-standards</a> is maintained by <a href="https://github.com/annielmenezes">annielmenezes</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
