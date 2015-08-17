@@ -248,44 +248,44 @@ users-router.js
 ```
 
 ### 1.3.1 Composed structures
-Substructures of views, models, etc. should exist inside a folder named after their parent.
+Substructures of modules. should exist inside a folder named after their parent.
 
 Example:
-Index view with 2 sub-views, user-details and user-row.
+Favorite has each piece view, collection and model into your folder.
 
 File structure:
 ```
-src/client/scripts/users
-├── views
-│   ├── index-view.js
-│   └── index
-│   │   ├── user-details-view.js
-│   │   └── user-row-view.js
+resource/javascripts/modules
+├── favorites
+│   ├── favorites-collection.js
+│   ├── favorites-model.js
+│   ├── favorites-view.js
+│   └── index.js
+├── feed
+│   ├── feed-collection.js
+│   ├── feed-model.js
+│   ├── feed-view.js
+│   └── index.js
+├── form
+│   ├── form-collection.js
+│   ├── form-model.js
+│   ├── form-view.js
+│   └── index.js
+└── perfil
+│   └── index.js
 ```
 
 index-view.js:
 ```
 'use strict';
 
-// npm module
-var View = require('view');
-// sub-views
-var UserDetails = require('./index/user-details-view');
-var UserRow = require('./index/user-row-view');
+// sub-items
+var PerfilFeed = require('./feeds');
+var PerfilFavorites = require('./favorites');
 
-module.exports = View.extend({
-    render: function () {
-        var selected = this.collection.getSelected();
-
-        this.collection.each(function (model) {
-            this.renderChild(new UserRow({ model: model }));
-        }, this);
-
-        if (selected) {
-            this.renderChild(new UserDetails({ model: selected }));
-        }
-    }
-});
+// start sub-items
+PerfilFeed();
+PerfilFavorites();
 ```
 
 
