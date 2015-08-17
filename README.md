@@ -49,7 +49,7 @@ This document was inspired by a combination of works:
     * 2.9.4 [`eval` is Evil](#294-eval-is-evil)
     * 2.9.5 [Internet Explorer's Conditional Comments](#295-internet-explorers-conditional-comments)
     * 2.9.6 [Multiline String Literals](#296-multiline-string-literals)
-    
+
 ### 3.0 [HTML and CSS](#30-html-and-css)
 * 3.1 [The `<html>`, `<head>`, and `<body>` Elements](#31-the-html-head-and-body-elements)
 * 3.2 [Doctype and Encoding](#32-doctype-and-encoding)
@@ -127,89 +127,124 @@ users-router.js
 
 ## 1.3.0 Project Structure
 ```
-├── grunt
-│   ├── uglify.js
-│   └── watch.js
-├── src
-│   ├── client
-│   │   ├── scripts
-│   │   │   ├── vendor
-│   │   │   │   ├── jquery
-│   │   │   │   │   ├── jquery.min.js
-│   │   │   │   │   └── jquery.js
-│   │   │   │   ├── backbone
-│   │   │   │   │   ├── backbone.min.js
-│   │   │   │   │   └── backbone.js
-│   │   │   │   └── underscore
-│   │   │   │   │   ├── underscore.min.js
-│   │   │   │   │   └── underscore.js
-│   │   │   │   └── forio
-│   │   │   │   │   ├── api.min.js
-│   │   │   │   │   └── api.js
-│   │   │   ├── common
-│   │   │   │   ├── routers
-│   │   │   │   │   ├── router.js
-│   │   │   │   ├── views
-│   │   │   │   │   └── view.js
-│   │   │   │   ├── templates
-│   │   │   ├── users
-│   │   │   │   ├── routers
-│   │   │   │   ├── views
-│   │   │   │   │   ├── index-view.js
-│   │   │   │   │   └── index
-│   │   │   │   │   │   ├── user-details-view.js
-│   │   │   │   │   │   └── user-row-view.js
-│   │   │   │   └── templates
-│   │   │   └── home
-│   │   │   │   └── ...
-│   │   ├── img
-│   │   │   └── ...
-│   │   ├── styles
-│   │   │   ├── vendor
-│   │   │   │   ├── bootstrap
-│   │   │   │   └── symbol-set
-│   │   │   ├── app
-│   │   │   │   ├── header.less
-│   │   │   │   ├── ...
-│   │   │   │   ├── footer.less
-│   │   │   │   └── app.less
-│   │   │   └── style.less
-│   │   ├── .jshintrc
-│   │   └── favicon.ico
-│   ├── server
-│   │   ├── lib
-│   │   │   ├── extensions
-│   │   │   ├── middleware
-│   │   │   └── mvc
-│   │   ├── common
-│   │   │   ├── views
-│   │   │   │   └── layouts
-│   │   │   │   │   └── default.hbs
-│   │   │   └── ...
-│   │   ├── users
-│   │   │   ├── controllers
-│   │   │   │   └── home-controller.js
-│   │   │   ├── views
-│   │   │   │   ├── help.hbs
-│   │   │   │   └── index.hbs
-│   │   │   └── ...
-│   │   └── home
-│   │   │   └── ...
+├── gulp.js
+│   ├── config
+│   │   ├── browserSync.js
+│   │   ├── fonts.js
+│   │   ├── html.js
+│   │   ├── iconFont.js
+│   │   ├── images.js
 │   │   ├── index.js
+│   │   ├── karma.js
+│   │   ├── sass.js
+│   │   ├── server.js
+│   │   ├── svg-sprite.js
+│   │   └── webpack.js
+│   ├── lib
+│   │   ├── compileLogger.js
+│   │   ├── handleErrors.js
+│   │   ├── prettifyTime.js
+│   │   ├── repeatString.js
+│   │   └── webpackManifest.js
+│   └── tasks
+│   │   └── iconFont
+│   │   │   ├── generateIconSass.js
+│   │   │   ├── index.js
+│   │   │   └── template.sass
+│   │   └── rev
+│   │   │   ├── index.js
+│   │   │   ├── rev-assets.js
+│   │   │   ├── rev-css.js
+│   │   │   ├── rev-update-references.js
+│   │   │   ├── sizereport.js
+│   │   │   └── update-html.js
+│   │   ├── browserSync.js
+│   │   ├── build-development.js
+│   │   ├── build-production.js
+│   │   ├── clean.js
+│   │   ├── default.js
+│   │   ├── fonts.js
+│   │   ├── html.js
+│   │   ├── images.js
+│   │   ├── karma.js
+│   │   ├── sass.js
+│   │   ├── server.js
+│   │   ├── svg-sprite.js
+│   │   ├── watch.js
+│   │   ├── webpack-development.js
+│   │   └── webpack-production.js
+│   └── index.js
+├── resources
+│   ├── fonts
+│   │   ├── Open-sans.ttf
+│   │   ├── Open-sans.eot
+│   │   ├── Open-sans.svg
+│   │   ├── Open-sans.woff
+│   │   └── Open-sans.woff2
+│   ├── icons
+│   │   ├── facebook.svg
+│   │   ├── twitter.svg
+│   │   ├── linkedin.svg
+│   │   ├── pinterest.svg
+│   │   └── portal-gsti.svg
+│   ├── images
+│   │   ├── bg-header.png
+│   │   └── image-default-user.jpg
+│   ├── sprites
+│   │   ├── facebook.svg
+│   │   ├── twitter.svg
+│   │   ├── linkedin.svg
+│   │   ├── pinterest.svg
+│   │   └── portal-gsti.svg
+│   ├── javascripts
+│   │   ├── modules
+│   │   │   ├── comments.js
+│   │   │   └── posts.js
+│   │   ├── entry-point.js
+│   │   ├── entry-point.js
+│   │   ├── entry-point.js
+│   │   ├── entry-point.js
 │   │   └── .jshintrc
-│   └── shared
-│       ├── models
-│       │   ├── user.js
-│       │   └── run.js
-│       └── collections
-│           ├── users.js
-│           └── runs.js
+│   ├── stylesheet
+│   │   ├── atoms
+│   │   │   ├── _color.scss
+│   │   │   ├── _dimensions.scss
+│   │   │   └── _typography.scss
+│   │   ├── base
+│   │   │   ├── mixins
+│   │   │   │   └── icons
+│   │   │   │   │   └── _icons.sass
+│   │   │   │   └── _respond-to.scss
+│   │   │   ├── _atoms.scss
+│   │   │   ├── _grid.scss
+│   │   │   ├── _mixins.scss
+│   │   │   └── _normalize.scss
+│   │   ├── layout
+│   │   │   └── _home.scss
+│   │   ├── modules
+│   │   │   └── _nav.scss
+│   │   ├── _base.scss
+│   │   ├── _layout.scss
+│   │   ├── _modules.scss
+│   │   └── style.scss
+│   ├── assets
+│   │   ├── fonts
+│   │   ├── images
+│   │   │   ├── image-default-comunity.jpg
+│   │   │   ├── image-default-user.jpg
+│   │   │   └── bg-home.png
+│   │   ├── javascripts
+│   │   │   └── entry-point.js
+│   │   ├── stylesheet
+│   │   │   └── style.css
 ├── .gitignore
 ├── .jscs.json
 ├── .jshintrc
+├── favicon.ico
+├── karma.conf.js
 ├── package.json
-├── Gruntfile.js
-└── README.md
+├── README.md
+└── webpack.config.js
 ```
 
 ### 1.3.1 Composed structures
@@ -312,7 +347,7 @@ forio.utils = {};
 ```javascript
 window['MLB'] = window['MLB'] || {};
 ```
- 
+
 ### 2.2.5 jQuery Elements
 Prefix jQuery elements with $ for clarity
 
@@ -355,7 +390,7 @@ JavaScript does not have block scope, so defining variables in blocks can confus
 ```javascript
 var doStuff = function (options) {
     options || (options = {});
-    
+
     var a;
     var b;
 };
@@ -474,7 +509,7 @@ Compound statements are statements that contain lists of statements enclosed in 
  * The `{` (left curly brace) should be at the end of the line that begins the compound statement.
  * The `}` (right curly brace) should begin a line and be indented to align with the beginning of the line containing the matching `{` (left curly brace).
  * Braces should be used around all statements, even single statements, when they are part of a control structure, such as an if or for statement. This makes it easier to add statements without accidentally introducing bugs.
- 
+
 ### 2.6.3 `return` Statement
 
 A return statement with a value should not use `( )` (parentheses) around the value. The return value expression must start on the same line as the return keyword in order to avoid semicolon insertion.
@@ -515,7 +550,7 @@ for (initialization; condition; update) {
 for (variable in object) {
     if (object.hasOwnProperty(variable)) {
         statements
-    } 
+    }
 }
 ```
 
@@ -527,7 +562,7 @@ The second form should be used with objects. Be aware that members that are adde
 for (variable in object) {
     if (object.hasOwnProperty(variable)) {
         statements
-    } 
+    }
 }
 ```
 
@@ -617,7 +652,7 @@ null == undefined   // true
 ' \t\r\n ' == 0     // true
 ```
 
-The lack of transitivity is alarming. My advice is to never use the evil twins. 
+The lack of transitivity is alarming. My advice is to never use the evil twins.
 
 **Instead, always use `=== and !==`.**
 
@@ -651,7 +686,7 @@ Blank spaces should be used in the following circumstances:
  * Use JSHint in your editor. [TextMate Bundle](http://fgnass.posterous.com/jslint-in-textmate)
 
 ## 2.9.0 Don'ts
- 
+
 ### 2.9.1 Use of CoffeeScript in Production
 
 > "I love CoffeeScript, I think CoffeeScript is a brilliant experiment.  It shows that if you take just the good parts of javascript and put a much better syntax on it, it's a really lovely programming language. I wish javascript looked a lot more like CoffeeScript.  That said, I would be careful where you use CoffeeScript.  I think it makes a lot of sense for experimentation, for prototypes, for one-offs, for hobbies...  I would not use it in production.  It's not a fully baked language, it's not a standard language, it's not fair to require anyone who might come after you..." - Douglas Crockford
