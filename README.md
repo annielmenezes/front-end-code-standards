@@ -8,7 +8,7 @@ This document was inspired by a combination of works:
 
 # Table of Contents
 
-### 1.0 [General](#10-general)
+### 1.0 [General](#10-general-1)
 * 1.1 [Helpful Resources](#11-helpful-resources)
 * 1.2.0 [Filenames](#120-filenames)
     * 1.2.1 [Avoid duplicate filenames](#121-avoid-duplicate-filenames)
