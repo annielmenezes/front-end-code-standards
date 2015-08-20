@@ -1,4 +1,4 @@
-# Forio Front-End Style Guide
+# Front-End Code Standards
 
 This document was inspired by a combination of works:
  * [Douglas Crockford - Code Conventions for the JavaScript Programming Language](http://javascript.crockford.com/code.html)
